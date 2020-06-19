@@ -19,7 +19,6 @@ public class ProductDAOImpl implements ProductDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	@Transactional
 	public List<Product> getProducts() {
 
 		Session currentSession = sessionFactory.getCurrentSession();
