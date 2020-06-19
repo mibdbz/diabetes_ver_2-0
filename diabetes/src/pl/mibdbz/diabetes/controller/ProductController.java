@@ -29,4 +29,11 @@ public class ProductController {
 		return "products-list";
 	}
 	
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model theModel) {
+		
+		
+		return "product-add-form";
+	}
+	
 }
