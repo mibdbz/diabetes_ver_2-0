@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import pl.mibdbz.diabetes.dao.ProductDAO;
@@ -32,8 +34,19 @@ public class ProductController {
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 		
+		Product theProduct = new Product();
+		
+		theModel.addAttribute("product", theProduct);
 		
 		return "product-add-form";
+	}
+	
+	@PostMapping("/saveProduct")
+	public String saveProduct(@ModelAttribute("product") Product theProduct) {
+		
+		productService.saveProduct(theProduct);
+		
+		return "redirect:/product/list";
 	}
 	
 }

@@ -23,11 +23,19 @@ public class ProductDAOImpl implements ProductDAO {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		Query<Product> theQuery = currentSession.createQuery("From Product", Product.class);
+		Query<Product> theQuery = currentSession.createQuery("From Product order by name", Product.class);
 		
 		List<Product> products = theQuery.getResultList();
 		
 		return products;
+	}
+
+	@Override
+	public void saveProduct(Product theProduct) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		currentSession.save(theProduct);
 	}
 
 }
