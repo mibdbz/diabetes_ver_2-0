@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import pl.mibdbz.diabetes.dao.ProductDAO;
 import pl.mibdbz.diabetes.entity.Product;
 import pl.mibdbz.diabetes.service.ProductService;
 
@@ -48,5 +48,20 @@ public class ProductController {
 		
 		return "redirect:/product/list";
 	}
+	
+	@GetMapping("/showUpdateForm")
+	public String showUpdateForm(@RequestParam("productId") int theId, Model theModel) {
+		
+		Product theProduct = productService.getProduct(theId);
+		
+		theModel.addAttribute("product", theProduct);
+		
+		return "product-add-form";
+	}
+	
+	
+	
+	
+	
 	
 }

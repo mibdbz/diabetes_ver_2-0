@@ -23,6 +23,9 @@
 		<h3>Zapisz Produkt</h3>
 		
 		<form:form action="saveProduct" modelAttribute="product" method="POST">
+		
+			<!-- This is where we tell that we have to use the same id and not create another product -->
+			<form:hidden path="id"/>
 			
 			<table>
 				<tbody>

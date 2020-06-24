@@ -35,7 +35,17 @@ public class ProductDAOImpl implements ProductDAO {
 		
 		Session currentSession = sessionFactory.getCurrentSession();
 		
-		currentSession.save(theProduct);
+		currentSession.saveOrUpdate(theProduct);
+	}
+
+	@Override
+	public Product getProduct(int theId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Product theProduct = currentSession.get(Product.class, theId);
+		
+		return theProduct;
 	}
 
 }
