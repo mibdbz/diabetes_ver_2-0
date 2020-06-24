@@ -41,6 +41,10 @@
 					<c:url var="updateLink" value="/product/showUpdateForm">
 						<c:param name="productId" value="${tempProduct.id}" />
 					</c:url>
+					
+					<c:url var="deleteLink" value="/product/delete">
+						<c:param name="productId" value="${tempProduct.id}" />
+					</c:url>
 				
 					<tr>
 						<td> ${tempProduct.name} </td>
@@ -51,6 +55,8 @@
 						<td> ${tempProduct.type} </td>
 						<td>
 							<a href="${updateLink}">Edytuj</a>
+							|
+							<a href="${deleteLink}" onclick="if (!(confirm('Czy napewno chcesz usunac ten produkt?'))) return false">Usun</a>
 						</td>
 					</tr>
 					
