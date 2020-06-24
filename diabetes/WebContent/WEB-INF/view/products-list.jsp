@@ -32,10 +32,15 @@
 					<th>Weglowodany</th>				
 					<th>Bialka</th>				
 					<th>Tluszcz</th>				
-					<th>Grupa</th>				
+					<th>Grupa</th>
+					<th>Akcja</th>			
 				</tr>
 				
 				<c:forEach var="tempProduct" items="${products}">
+				
+					<c:url var="updateLink" value="/product/showUpdateForm">
+						<c:param name="productId" value="${tempProduct.id}" />
+					</c:url>
 				
 					<tr>
 						<td> ${tempProduct.name} </td>
@@ -44,6 +49,9 @@
 						<td> ${tempProduct.proteins} </td>
 						<td> ${tempProduct.fat} </td>
 						<td> ${tempProduct.type} </td>
+						<td>
+							<a href="${updateLink}">Edytuj</a>
+						</td>
 					</tr>
 					
 				</c:forEach>
