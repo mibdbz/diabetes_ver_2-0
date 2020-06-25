@@ -13,4 +13,6 @@ public interface ProductDAO {
 	public Product getProduct(int theId);
 
 	public void deleteProduct(int theId);
+
+	public List<Product> searchForProducts(String theSearchName);
 } 

@@ -67,5 +67,15 @@ public class ProductController {
 		return "redirect:/product/list";
 	}
 	
+	@GetMapping("/search")
+	public String searchProducts(@RequestParam("theSearchName") String theSearchName, Model theModel) {
+		
+		List<Product> theProducts = productService.searchForProducts(theSearchName);
+		
+		theModel.addAttribute("products", theProducts);
+		
+		return "products-list";
+	}
+	
 	
 }

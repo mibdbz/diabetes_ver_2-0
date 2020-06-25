@@ -61,4 +61,27 @@ public class ProductDAOImpl implements ProductDAO {
 		
 	}
 
+	@Override
+	public List<Product> searchForProducts(String theSearchName) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query theQuery = null;
+		
+		if (theSearchName != null && theSearchName.trim().length() > 0) {
+			
+			theQuery = currentSession.createQuery("from Product where lower(name) like :theName", Product.class);
+			
+			theQuery.setParameter("theName", "%" + theSearchName.toLowerCase() + "%");
+			
+		} else {
+            // theSearchName is empty ... so just get all customers
+            theQuery = currentSession.createQuery("from Product", Product.class);            
+        }
+		
+		List<Product> products = theQuery.getResultList();
+		
+		return products;
+	}
+
 }
