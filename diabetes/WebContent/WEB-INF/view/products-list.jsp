@@ -15,7 +15,7 @@
 
 	<div id="wrapper">
 		<div id="header">
-			<h2>List of all products</h2>
+			<h2>Lista Produktów</h2>
 		</div>
 	</div>
 	
@@ -55,8 +55,12 @@
 						<c:param name="productId" value="${tempProduct.id}" />
 					</c:url>
 				
+					<c:url var="nameLink" value="/product/insideForm">
+						<c:param name="productId" value="${tempProduct.id}" />
+					</c:url>
+					
 					<tr>
-						<td> ${tempProduct.name} </td>
+						<td> <a href="${nameLink}">${tempProduct.name}</a></td>
 						<td> ${tempProduct.kcal} </td>
 						<td> ${tempProduct.carbohydrates} </td>
 						<td> ${tempProduct.proteins} </td>
