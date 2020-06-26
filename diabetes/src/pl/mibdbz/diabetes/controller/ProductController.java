@@ -77,5 +77,15 @@ public class ProductController {
 		return "products-list";
 	}
 	
+	@GetMapping("/insideForm")
+	public String insideForm(@RequestParam("productId") int theId, Model theModel) {
+		
+		Product theProduct = productService.getProduct(theId);
+		
+		theModel.addAttribute("product", theProduct);
+		
+		return "product-inside";
+	}
+	
 	
 }
