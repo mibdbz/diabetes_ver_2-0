@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import pl.mibdbz.diabetes.entity.Exchangers;
 import pl.mibdbz.diabetes.entity.Product;
+import pl.mibdbz.diabetes.service.CalculateService;
 import pl.mibdbz.diabetes.service.ProductService;
 
 @Controller
@@ -20,6 +22,12 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CalculateService calculateService;
+	
+	private Product productForCalculating;
+	
 
 	@GetMapping("/list")
 	public String productsList(Model theModel) {
@@ -80,12 +88,23 @@ public class ProductController {
 	@GetMapping("/insideForm")
 	public String insideForm(@RequestParam("productId") int theId, Model theModel) {
 		
-		Product theProduct = productService.getProduct(theId);
+		productForCalculating = productService.getProduct(theId);
 		
-		theModel.addAttribute("product", theProduct);
+		theModel.addAttribute("product", productForCalculating);
 		
 		return "product-inside";
 	}
+	
+	@GetMapping("/howMuchGrams")
+	public String howMuchGrams(@RequestParam("numberOfGrams") int grams, Model theModel) {
+		
+		Exchangers exchangers = calculateService.calculateExchangers(grams, productForCalculating);
+		
+		System.out.println(exchangers);
+		
+		return null;
+	}
+	
 	
 	
 }
