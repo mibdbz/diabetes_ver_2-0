@@ -37,10 +37,6 @@
 			
 				<tr>
 					<th>Name</th>				
-					<th>Kcal</th>				
-					<th>Weglowodany</th>				
-					<th>Bialka</th>				
-					<th>Tluszcz</th>				
 					<th>Grupa</th>
 					<th>Akcja</th>			
 				</tr>
@@ -61,10 +57,6 @@
 					
 					<tr>
 						<td> <a href="${nameLink}">${tempProduct.name}</a></td>
-						<td> ${tempProduct.kcal} </td>
-						<td> ${tempProduct.carbohydrates} </td>
-						<td> ${tempProduct.proteins} </td>
-						<td> ${tempProduct.fat} </td>
 						<td> ${tempProduct.type} </td>
 						<td>
 							<a href="${updateLink}">Edytuj</a>
