@@ -39,11 +39,11 @@
 
 				<tr>
 					<td>${product.name}</td>
-					<td>${product.kcal} </td>
-					<td>${product.carbohydrates} </td>
-					<td>${product.proteins} </td>
-					<td>${product.fat} </td>
-					<td>${product.type} </td>
+					<td>${product.kcal}</td>
+					<td>${product.carbohydrates}</td>
+					<td>${product.proteins}</td>
+					<td>${product.fat}</td>
+					<td>${product.type}</td>
 				</tr>
 				
 			</table>
@@ -58,11 +58,8 @@
         	
         	</form:form>
 			
-			
 		</div>
 	</div>
-
-
 
 </body>
 
