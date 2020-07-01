@@ -30,40 +30,39 @@
 			<table>
 				<tbody>
 					<tr>
-						<td><label>Nazwa:</label><td>
+						<td><label>Nazwa:</label></td>
 						<td><form:input path="name"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Kcal:</label><td>
+						<td><label>Kcal:</label></td>
 						<td><form:input path="kcal"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Weglowodany:</label><td>
+						<td><label>Weglowodany:</label></td>
 						<td><form:input path="carbohydrates"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Bialka:</label><td>
+						<td><label>Bialka:</label></td>
 						<td><form:input path="proteins"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Tluszcze:</label><td>
+						<td><label>Tluszcze:</label></td>
 						<td><form:input path="fat"/></td>
 					</tr>
 					
 					<tr>
-						<td><label>Typ:</label><td>
-						<td><form:input path="type"/></td>
+						<td><label>Typ:</label></td>
+						<td>
+							<form:select path="type"> 
+ 								<form:options items="${typesOptions}" />
+							</form:select>
+						</td>
 					</tr>
-						<!--
-						<td><select id="type" name="Grupa">
-								<option value="warzywa">Warzywa</option>
-								<option value="owoce">Owoce</option>
-								<option value="tluszcze">Tluszcze</option>
-						</select></td> -->
+					
 					<tr>
 						<td><label></label><td>
 						<td><input type="submit" value="Zapisz"/></td>
