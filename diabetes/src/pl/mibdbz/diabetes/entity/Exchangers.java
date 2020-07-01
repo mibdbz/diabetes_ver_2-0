@@ -3,9 +3,9 @@ package pl.mibdbz.diabetes.entity;
 
 public class Exchangers {
 
-	private double Carbohydrates;
+	private double carbohydrates;
 	
-	private double ProteinAndFat;
+	private double proteinAndFat;
 	
 	
 	
@@ -16,33 +16,33 @@ public class Exchangers {
 	
 
 	public Exchangers(double carbohydrates, double proteinAndFat) {
-		Carbohydrates = carbohydrates;
-		ProteinAndFat = proteinAndFat;
+		this.carbohydrates = carbohydrates;
+		this.proteinAndFat = proteinAndFat;
 	}
 
 
 
 	public double getCarbohydrates() {
-		return Carbohydrates;
+		return carbohydrates;
 	}
 
 	public void setCarbohydrates(double carbohydrates) {
-		Carbohydrates = carbohydrates;
+		this.carbohydrates = carbohydrates;
 	}
 
 	public double getProteinAndFat() {
-		return ProteinAndFat;
+		return proteinAndFat;
 	}
 
 	public void setProteinAndFat(double proteinAndFat) {
-		ProteinAndFat = proteinAndFat;
+		this.proteinAndFat = proteinAndFat;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "Exchangers [Carbohydrates=" + Carbohydrates + ", ProteinAndFat=" + ProteinAndFat + "]";
+		return "Exchangers [Carbohydrates=" + carbohydrates + ", ProteinAndFat=" + proteinAndFat + "]";
 	}
 	
 
