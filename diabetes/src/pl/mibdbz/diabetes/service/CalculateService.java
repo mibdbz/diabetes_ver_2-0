@@ -44,12 +44,41 @@ public class CalculateService {
 		
 		double proteinsAndFatExchanger = (proteinExchanger + fatExchanger) / 100;
 		
-		proteinsAndFatExchanger *= 100;
-		
-		proteinsAndFatExchanger = Math.round(proteinsAndFatExchanger);
-		
-		proteinsAndFatExchanger /= 100;
-		
-		return proteinsAndFatExchanger;
+		return rounding(proteinsAndFatExchanger);
 	}
+
+	public Product calculateProductGrams(int grams, Product productForCalculating) {
+		
+		Product tempProduct = new Product();
+		
+		double temp = (productForCalculating.getCarbohydrates() * grams) / 100;
+		tempProduct.setCarbohydrates(rounding(temp));
+		
+		tempProduct.setKcal((productForCalculating.getKcal() * grams) / 100);
+		
+		temp = (productForCalculating.getProteins() * grams) / 100;
+		tempProduct.setProteins(rounding(temp));
+		
+		temp = (productForCalculating.getFat() * grams) / 100;
+		tempProduct.setFat(rounding(temp));
+		
+		tempProduct.setName(productForCalculating.getName());
+		tempProduct.setId(productForCalculating.getId());
+		tempProduct.setType(productForCalculating.getType());
+		
+		return tempProduct;
+	}
+	
+	private double rounding(double tempDouble) {
+		
+		tempDouble *= 100;
+		
+		tempDouble = Math.round(tempDouble);
+		
+		tempDouble /= 100;
+
+		return tempDouble;
+	}
+	
+	
 }
