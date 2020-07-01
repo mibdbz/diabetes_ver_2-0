@@ -1,5 +1,6 @@
 package pl.mibdbz.diabetes.entity;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +34,6 @@ public class Product {
 	
 	@Column(name = "type")
 	private String type;
-	
 	
 	
 	public Product() {
