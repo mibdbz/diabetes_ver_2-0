@@ -57,6 +57,12 @@
         		<input type="submit" value="Dodaj" class="add-button" />
         	
         	</form:form>
+        	
+        	<div style="clear; both"></div>
+		
+		<p>
+			<a href="${pageContext.request.contextPath}/product/list">Wroc Do Listy</a>
+		</p>
 			
 		</div>
 	</div>

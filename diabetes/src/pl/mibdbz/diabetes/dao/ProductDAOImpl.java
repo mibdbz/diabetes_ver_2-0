@@ -76,10 +76,18 @@ public class ProductDAOImpl implements ProductDAO {
 			
 		} else {
             // theSearchName is empty ... so just get all customers
-            theQuery = currentSession.createQuery("from Product", Product.class);            
+            theQuery = currentSession.createQuery("from Product order by name", Product.class);            
         }
 		
 		List<Product> products = theQuery.getResultList();
+		
+		if(products.isEmpty()) {
+			
+			Product theProduct = new Product();
+			theProduct.setName("Brak Produktu");
+			
+			products.add(theProduct);
+		}
 		
 		return products;
 	}
