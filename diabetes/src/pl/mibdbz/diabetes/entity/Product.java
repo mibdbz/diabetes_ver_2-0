@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,11 +21,14 @@ public class Product {
 	@Column(name = "id")
 	private int id;
 	
-	@NotNull(message = "obowiazkowe")
-	@Size(min=1, message="obowiazkowe")
+	@NotNull(message = "Obowiazkowe")
+	@Size(min=1, message="Obowiazkowe")
 	@Column(name = "name")
 	private String name;
 	
+	@NotNull(message="Obowiazkowe")
+	@Min(value=0, message="Nie moze byc ujemna")
+	@Max(value=1000, message="Nie moze byc wieksza niz 1000")
 	@Column(name = "kcal")
 	private int kcal;
 	

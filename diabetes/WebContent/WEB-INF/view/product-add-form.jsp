@@ -38,6 +38,7 @@
 					<tr>
 						<td><label>Kcal:</label></td>
 						<td><form:input path="kcal"/></td>
+						<td><form:errors path="kcal" class="error" /></td>
 					</tr>
 					
 					<tr>
