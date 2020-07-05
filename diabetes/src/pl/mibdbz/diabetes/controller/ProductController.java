@@ -1,5 +1,6 @@
 package pl.mibdbz.diabetes.controller;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,15 +8,19 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.bytebuddy.matcher.TypeSortMatcher;
 import pl.mibdbz.diabetes.entity.Exchangers;
 import pl.mibdbz.diabetes.entity.Product;
 import pl.mibdbz.diabetes.service.CalculateService;
@@ -38,6 +43,17 @@ public class ProductController {
 	
 	
 	
+	
+	
+	@InitBinder
+	public void initBinder(WebDataBinder dataBinder) {
+		
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		
+		dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+	}
+	
+	
 
 	@GetMapping("/list")
 	public String productsList(Model theModel) {
@@ -53,7 +69,7 @@ public class ProductController {
 	public String showFormForAdd(Model theModel) {
 		
 		Product theProduct = new Product();
-		
+
 		theModel.addAttribute("product", theProduct);
 		
 		theModel.addAttribute("typesOptions", typesOptions);
@@ -62,7 +78,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("/saveProduct")
-	public String saveProduct(@Valid @ModelAttribute("product") Product theProduct, BindingResult bindingResult) {
+	public String saveProduct(@Valid @ModelAttribute("product") Product theProduct, BindingResult bindingResult, Model theModel) {
+		
+		theModel.addAttribute("typesOptions", typesOptions);
 		
 		if(bindingResult.hasErrors()) {
 			return "product-add-form";
