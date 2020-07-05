@@ -32,6 +32,7 @@
 					<tr>
 						<td><label>Nazwa:</label></td>
 						<td><form:input path="name"/></td>
+						<td><form:errors path="name" cssClass="error" /></td>
 					</tr>
 					
 					<tr>
@@ -65,7 +66,7 @@
 					
 					<tr>
 						<td><label></label><td>
-						<td><input type="submit" value="Zapisz"/></td>
+						<td><input type="submit" value="Zapisz" onclick="if (!(confirm('Napewno chcesz dodac produkt?'))) return false"/></td>
 					</tr>
 				</tbody>
 			</table>

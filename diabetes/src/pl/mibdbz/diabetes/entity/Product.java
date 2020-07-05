@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "product")
@@ -17,6 +19,8 @@ public class Product {
 	@Column(name = "id")
 	private int id;
 	
+	@NotNull(message = "obowiazkowe")
+	@Size(min=1, message="obowiazkowe")
 	@Column(name = "name")
 	private String name;
 	

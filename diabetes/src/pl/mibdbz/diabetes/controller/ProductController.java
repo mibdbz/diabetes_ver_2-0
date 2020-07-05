@@ -3,10 +3,13 @@ package pl.mibdbz.diabetes.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -59,11 +62,16 @@ public class ProductController {
 	}
 	
 	@PostMapping("/saveProduct")
-	public String saveProduct(@ModelAttribute("product") Product theProduct) {
+	public String saveProduct(@Valid @ModelAttribute("product") Product theProduct, BindingResult bindingResult) {
+		
+		if(bindingResult.hasErrors()) {
+			return "product-add-form";
+		} else {
 		
 		productService.saveProduct(theProduct);
 		
 		return "redirect:/product/list";
+		}
 	}
 	
 	@GetMapping("/showUpdateForm")
