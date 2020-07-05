@@ -32,7 +32,7 @@
 					<tr>
 						<td><label>Nazwa:</label></td>
 						<td><form:input path="name"/></td>
-						<td><form:errors path="name" cssClass="error" /></td>
+						<td><form:errors path="name" class="error" /></td>
 					</tr>
 					
 					<tr>
