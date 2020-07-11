@@ -1,6 +1,7 @@
 package pl.mibdbz.diabetes.entity;
 
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import pl.mibdbz.diabetes.validator.DoubleField;
 
 @Entity
 @Table(name = "product")
@@ -30,7 +33,7 @@ public class Product {
 	@Min(value=0, message="Nie moze byc ujemna")
 	@Max(value=1000, message="Nie moze byc wieksza niz 1000")
 	@Column(name = "kcal")
-	private int kcal;
+	private Integer kcal;
 	
 	@Column(name = "carbohydrates")
 	private double carbohydrates;
@@ -67,11 +70,11 @@ public class Product {
 		this.name = name;
 	}
 
-	public int getKcal() {
+	public Integer getKcal() {
 		return kcal;
 	}
 
-	public void setKcal(int kcal) {
+	public void setKcal(Integer kcal) {
 		this.kcal = kcal;
 	}
 

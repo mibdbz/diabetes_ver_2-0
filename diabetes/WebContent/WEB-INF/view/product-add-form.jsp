@@ -44,16 +44,19 @@
 					<tr>
 						<td><label>Weglowodany:</label></td>
 						<td><form:input path="carbohydrates"/></td>
+						<td><form:errors path="carbohydrates" class="error" /></td>
 					</tr>
 					
 					<tr>
 						<td><label>Bialka:</label></td>
 						<td><form:input path="proteins"/></td>
+						<td><form:errors path="proteins" class="error" /></td>
 					</tr>
 					
 					<tr>
 						<td><label>Tluszcze:</label></td>
 						<td><form:input path="fat"/></td>
+						<td><form:errors path="fat" class="error" /></td>
 					</tr>
 					
 					<tr>
