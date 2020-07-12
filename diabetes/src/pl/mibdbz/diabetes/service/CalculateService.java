@@ -1,5 +1,7 @@
 package pl.mibdbz.diabetes.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.stereotype.Service;
 
 import pl.mibdbz.diabetes.entity.Exchangers;
@@ -19,17 +21,19 @@ public class CalculateService {
 		return exc;
 	}
 	
-	private double calculateCarbo(int grams, Product tempProduct) {
+	private BigDecimal calculateCarbo(int grams, Product tempProduct) {
 		
-		double numberOfCarbo = (grams * tempProduct.getCarbohydrates()) / 100;
+		BigDecimal numberOfCarbo = tempProduct.getCarbohydrates();
+				numberOfCarbo = (numberOfCarbo.multiply(new BigDecimal(grams)));
+				numberOfCarbo = numberOfCarbo.divide(new BigDecimal(100));
 		
-		double carboExchanger = numberOfCarbo / 10;
+		BigDecimal carboExchanger = numberOfCarbo.divide(new BigDecimal(10));
 		
-		carboExchanger *= 100;
+		/*carboExchanger *= 100;
 		
 		carboExchanger = Math.round(carboExchanger);
 		
-		carboExchanger /= 100;
+		carboExchanger /= 100;*/
 		
 		return carboExchanger;
 	}
@@ -51,16 +55,19 @@ public class CalculateService {
 		
 		Product tempProduct = new Product();
 		
-		double temp = (productForCalculating.getCarbohydrates() * grams) / 100;
-		tempProduct.setCarbohydrates(rounding(temp));
+		BigDecimal temp = productForCalculating.getCarbohydrates();
+		temp = temp.multiply(new BigDecimal(grams));
+		temp = temp.divide(new BigDecimal(100));
+				
+		//tempProduct.setCarbohydrates(rounding(temp));
 		
 		tempProduct.setKcal((productForCalculating.getKcal() * grams) / 100);
 		
-		temp = (productForCalculating.getProteins() * grams) / 100;
-		tempProduct.setProteins(rounding(temp));
+		double anotherTemp = (productForCalculating.getProteins() * grams) / 100;
+		tempProduct.setProteins(rounding(anotherTemp));
 		
-		temp = (productForCalculating.getFat() * grams) / 100;
-		tempProduct.setFat(rounding(temp));
+		anotherTemp = (productForCalculating.getFat() * grams) / 100;
+		tempProduct.setFat(rounding(anotherTemp));
 		
 		tempProduct.setName(productForCalculating.getName());
 		tempProduct.setId(productForCalculating.getId());

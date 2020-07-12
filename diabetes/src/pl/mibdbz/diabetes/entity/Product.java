@@ -2,12 +2,15 @@ package pl.mibdbz.diabetes.entity;
 
 
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -35,8 +38,11 @@ public class Product {
 	@Column(name = "kcal")
 	private Integer kcal;
 	
+	@NotNull(message="Obowiazkowe")
+	@Min(value=0, message="Nie moze byc ujemna")
+	@Max(value=1000, message="Nie moze byc wieksza niz 1000")
 	@Column(name = "carbohydrates")
-	private double carbohydrates;
+	private BigDecimal carbohydrates;
 	
 	@Column(name = "proteins")
 	private double proteins;
@@ -78,11 +84,11 @@ public class Product {
 		this.kcal = kcal;
 	}
 
-	public double getCarbohydrates() {
+	public BigDecimal getCarbohydrates() {
 		return carbohydrates;
 	}
 
-	public void setCarbohydrates(double carbohydrates) {
+	public void setCarbohydrates(BigDecimal carbohydrates) {
 		this.carbohydrates = carbohydrates;
 	}
 

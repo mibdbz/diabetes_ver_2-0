@@ -1,9 +1,10 @@
 package pl.mibdbz.diabetes.entity;
 
+import java.math.BigDecimal;
 
 public class Exchangers {
 
-	private double carbohydrates;
+	private BigDecimal carbohydrates;
 	
 	private double proteinAndFat;
 	
@@ -15,18 +16,18 @@ public class Exchangers {
 	
 	
 
-	public Exchangers(double carbohydrates, double proteinAndFat) {
+	public Exchangers(BigDecimal carbohydrates, double proteinAndFat) {
 		this.carbohydrates = carbohydrates;
 		this.proteinAndFat = proteinAndFat;
 	}
 
 
 
-	public double getCarbohydrates() {
+	public BigDecimal getCarbohydrates() {
 		return carbohydrates;
 	}
 
-	public void setCarbohydrates(double carbohydrates) {
+	public void setCarbohydrates(BigDecimal carbohydrates) {
 		this.carbohydrates = carbohydrates;
 	}
 
