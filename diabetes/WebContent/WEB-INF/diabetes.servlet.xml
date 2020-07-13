@@ -71,7 +71,11 @@
 	
 	<!-- Add support for reading web resources -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
-
+	
+	<!--  load custom error messages -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames" value="resources/messages" />
+	</bean>
 
 </beans>
 
