@@ -81,6 +81,8 @@ public class ProductController {
 		
 		theModel.addAttribute("typesOptions", typesOptions);
 		
+		System.out.println("Binding result: " + bindingResult);
+		
 		if(bindingResult.hasErrors()) {
 			return "product-add-form";
 		} else {
@@ -97,6 +99,8 @@ public class ProductController {
 		Product theProduct = productService.getProduct(theId);
 		
 		theModel.addAttribute("product", theProduct);
+		
+		theModel.addAttribute("typesOptions", typesOptions);
 		
 		return "product-add-form";
 	}
