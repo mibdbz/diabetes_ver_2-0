@@ -6,7 +6,7 @@ public class Exchangers {
 
 	private BigDecimal carbohydrates;
 	
-	private double proteinAndFat;
+	private BigDecimal proteinAndFat;
 	
 	
 	
@@ -16,7 +16,7 @@ public class Exchangers {
 	
 	
 
-	public Exchangers(BigDecimal carbohydrates, double proteinAndFat) {
+	public Exchangers(BigDecimal carbohydrates, BigDecimal proteinAndFat) {
 		this.carbohydrates = carbohydrates;
 		this.proteinAndFat = proteinAndFat;
 	}
@@ -31,11 +31,11 @@ public class Exchangers {
 		this.carbohydrates = carbohydrates;
 	}
 
-	public double getProteinAndFat() {
+	public BigDecimal getProteinAndFat() {
 		return proteinAndFat;
 	}
 
-	public void setProteinAndFat(double proteinAndFat) {
+	public void setProteinAndFat(BigDecimal proteinAndFat) {
 		this.proteinAndFat = proteinAndFat;
 	}
 

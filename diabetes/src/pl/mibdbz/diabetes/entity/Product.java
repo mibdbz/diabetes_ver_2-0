@@ -44,11 +44,17 @@ public class Product {
 	@Column(name = "carbohydrates")
 	private BigDecimal carbohydrates;
 	
+	@NotNull(message="Obowiazkowe")
+	@Min(value=0, message="Nie moze byc ujemna")
+	@Max(value=1000, message="Nie moze byc wieksza niz 1000")
 	@Column(name = "proteins")
-	private double proteins;
+	private BigDecimal proteins;
 	
+	@NotNull(message="Obowiazkowe")
+	@Min(value=0, message="Nie moze byc ujemna")
+	@Max(value=1000, message="Nie moze byc wieksza niz 1000")
 	@Column(name = "fat")
-	private double fat;
+	private BigDecimal fat;
 	
 	@Column(name = "type")
 	private String type;
@@ -92,19 +98,19 @@ public class Product {
 		this.carbohydrates = carbohydrates;
 	}
 
-	public double getProteins() {
+	public BigDecimal getProteins() {
 		return proteins;
 	}
 
-	public void setProteins(double proteins) {
+	public void setProteins(BigDecimal proteins) {
 		this.proteins = proteins;
 	}
 
-	public double getFat() {
+	public BigDecimal getFat() {
 		return fat;
 	}
 
-	public void setFat(double fat) {
+	public void setFat(BigDecimal fat) {
 		this.fat = fat;
 	}
 

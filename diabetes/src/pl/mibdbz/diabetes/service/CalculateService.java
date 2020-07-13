@@ -38,17 +38,25 @@ public class CalculateService {
 		return carboExchanger;
 	}
 	
-	private double calculateProteinsAndFat(int grams, Product tempProduct) {
+	private BigDecimal calculateProteinsAndFat(int grams, Product tempProduct) {
 		
-		double numberOfProteins = (grams * tempProduct.getProteins()) / 100;
-		double numberOfFat = (grams * tempProduct.getFat()) / 100;
+		BigDecimal numberOfProteins = tempProduct.getProteins();
+				   numberOfProteins = numberOfProteins.multiply(new BigDecimal(grams));
+				   numberOfProteins = numberOfProteins.divide(new BigDecimal(100));
+				
+		BigDecimal numberOfFat = tempProduct.getFat();
+				   numberOfFat = numberOfFat.multiply(new BigDecimal(grams));
+				   numberOfFat = numberOfFat.divide(new BigDecimal(100));
 		
-		double proteinExchanger = numberOfProteins * 4;
-		double fatExchanger = numberOfFat * 9;
+		BigDecimal proteinExchanger = numberOfProteins.multiply(new BigDecimal(4));
 		
-		double proteinsAndFatExchanger = (proteinExchanger + fatExchanger) / 100;
+		BigDecimal fatExchanger = numberOfFat.multiply(new BigDecimal(9));
 		
-		return rounding(proteinsAndFatExchanger);
+		BigDecimal proteinsAndFatExchanger = (proteinExchanger.add(fatExchanger));
+				   proteinsAndFatExchanger = proteinsAndFatExchanger.divide(new BigDecimal(100));
+		
+		//return rounding(proteinsAndFatExchanger);
+		return proteinsAndFatExchanger;
 	}
 
 	public Product calculateProductGrams(int grams, Product productForCalculating) {
@@ -56,18 +64,24 @@ public class CalculateService {
 		Product tempProduct = new Product();
 		
 		BigDecimal temp = productForCalculating.getCarbohydrates();
-		temp = temp.multiply(new BigDecimal(grams));
-		temp = temp.divide(new BigDecimal(100));
+				   temp = temp.multiply(new BigDecimal(grams));
+				   temp = temp.divide(new BigDecimal(100));
 				
 		//tempProduct.setCarbohydrates(rounding(temp));
 		
 		tempProduct.setKcal((productForCalculating.getKcal() * grams) / 100);
 		
-		double anotherTemp = (productForCalculating.getProteins() * grams) / 100;
-		tempProduct.setProteins(rounding(anotherTemp));
+				   temp = productForCalculating.getProteins();
+				   temp = temp.multiply(new BigDecimal(grams));
+				   temp = temp.divide(new BigDecimal(100));
+				   
+		tempProduct.setProteins(temp);
 		
-		anotherTemp = (productForCalculating.getFat() * grams) / 100;
-		tempProduct.setFat(rounding(anotherTemp));
+		temp = productForCalculating.getFat();
+		temp = temp.multiply(new BigDecimal(grams));
+		temp = temp.divide(new BigDecimal(100));
+		
+		tempProduct.setFat(temp);
 		
 		tempProduct.setName(productForCalculating.getName());
 		tempProduct.setId(productForCalculating.getId());
