@@ -149,6 +149,12 @@ public class ProductController {
 		return "show-exchangers";
 	}
 	
+	@GetMapping("/newSite")
+	public String newSite(Model theModel) {
+		
+		return "home-page";
+	}
+	
 	
 	
 }
